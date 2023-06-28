@@ -14,8 +14,12 @@ class LandingPage(TemplateView):
     template_name = get_template('main')
 
     def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         model = LinearRegression()
-        return super().get_context_data(**kwargs)
+        month_list = ['januari', 'febuari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'septermber', 'oktober', 'november', 'desember']
+
+        context['months'] = month_list
+        return context
 
     @method_decorator(login_required(login_url=settings.LOGIN_URL))
     def dispatch(self, request, *args, **kwargs):

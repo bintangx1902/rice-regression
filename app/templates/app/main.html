@@ -6,5 +6,25 @@
 </head>
 <body>
 <h1>main</h1>
+<h2>prediksi harga beras</h2>
+<form method="get">
+    <label>Tahun : </label> <input type="text" name="year" id="year"> <br>
+    <label for="month">Bulan : </label>
+    <select name="month" id="month">
+        {% for month in months %}
+        <option value="{{ month }}">{{ month }}</option>
+        {% endfor %}
+    </select> <br>
+
+    <label for="qlt">Kualitas : </label>
+    <select name="qlt" id="qlt">
+        <option value="premium">Premium</option>
+        <option value="medium">Medium</option>
+        <option value="luar kualitas">Luar Kualitas</option>
+    </select> <br>
+
+    <button>prediksi</button>
+</form>
+
 </body>
 </html>
