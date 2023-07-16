@@ -37,7 +37,7 @@ class LandingPage(TemplateView):
 
             pred = np.array([[year, qlt, month]])
             predict = model.predict(pred)
-            context['predict'] = f"Rp {round(predict[0], 4)}"
+            context['predict'] = f"Rp {round(predict[0], 4):,.4f}"
 
         context['months'] = month_list
         return context
