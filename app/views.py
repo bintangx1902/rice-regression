@@ -12,7 +12,7 @@ def get_template(temp):
 
 
 class LandingPage(TemplateView):
-    template_name = get_template('main')
+    template_name = get_template('index')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -37,11 +37,11 @@ class LandingPage(TemplateView):
 
             pred = np.array([[year, qlt, month]])
             predict = model.predict(pred)
-            context['predict'] = predict
+            context['predict'] = f"Rp {round(predict[0], 4)}"
 
         context['months'] = month_list
         return context
 
-    # @method_decorator(login_required(login_url=settings.LOGIN_URL))
-    # def dispatch(self, request, *args, **kwargs):
-    #     return super().dispatch(request, *args, **kwargs)
+    @method_decorator(login_required(login_url=settings.LOGIN_URL))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
