@@ -20,6 +20,7 @@ class LandingPage(TemplateView):
         month_list = ['januari', 'febuari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'oktober',
                       'november', 'desember']
 
+        month_list = [x.capitalize() for x in month_list]
         X, y = data_frame()
         model.fit(X, y)
         coef = model.coef_

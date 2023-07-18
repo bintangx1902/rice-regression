@@ -7,7 +7,7 @@ def clean_month(month):
     month_list = ['januari', 'febuari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'oktober',
                   'november', 'desember']
 
-    return month_list.index(month) + 1
+    return month_list.index(month.lower()) + 1
 
 
 def clean_quality(quality):
