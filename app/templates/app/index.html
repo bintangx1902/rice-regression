@@ -1,156 +1,155 @@
 <!DOCTYPE html>
-{% load static %}
-{% load i18n %}
-{% load l10n %}
-{% load humanize %}
+{% load static %} {% load i18n %} {% load l10n %} {% load humanize %}
 
 <html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>Berasku</title>
+		<meta content="" name="description" />
+		<meta content="" name="keywords" />
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<!-- Favicons -->
+		<link href="assets/img/favicon.png" rel="icon" />
+		<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-    <title>Berasku</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet" />
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+		<!-- Vendor CSS Files -->
+		<link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet" />
+		<link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+		<link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet" />
+		<link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet" />
+		<link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet" />
+		<link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet" />
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
-    <!-- Google Fonts -->
-    <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-            rel="stylesheet">
+		<!-- Template Main CSS File -->
+		<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+	</head>
+	<style>
+		table,
+		th,
+		td {
+			border: 2px solid black;
+			border-collapse: collapse;
+			text-align: center;
+		}
 
-    <!-- Vendor CSS Files -->
-    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
-    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		.scroll {
+			overflow-x: scroll;
+			max-height: 300px;
+		}
 
-    <!-- Template Main CSS File -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+		td {
+			background-color: #ffffff;
+			color: black;
+			padding-left: 30px;
+			padding-right: 40px;
+		}
 
-</head>
-<style>
-    table,
-    th,
-    td {
-        border: 2px solid black;
-        border-collapse: collapse;
-        text-align: center;
-    }
+		th {
+			background-color: #8d7b68;
+			color: #ffffff;
+			padding-left: 30px;
+			padding-right: 40px;
+		}
 
-    .scroll {
-        overflow-x: scroll;
-        max-height: 300px;
-    }
+		#ricePriceChart {
+			width: 800px;
+			height: 400px;
+			margin: 0 auto;
+		}
+	</style>
 
-    td {
-        background-color: #ffffff;
-        color: black;
-        padding-left: 30px;
-        padding-right: 40px;
-    }
+	<body>
+		<!-- ======= Mobile nav toggle button ======= -->
+		<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-    th {
-        background-color: #8D7B68;
-        color: #ffffff;
-        padding-left: 30px;
-        padding-right: 40px;
-    }
-</style>
+		<!-- ======= Header ======= -->
+		<header id="header">
+			<div class="d-flex flex-column">
+				<nav id="navbar" class="nav-menu navbar">
+					<ul>
+						<li>
+							<a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a>
+						</li>
+						<li>
+							<a href="#predict" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Prediksi</span></a>
+						</li>
+						<li>
+							<a href="#data" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Data Aktual</span></a>
+						</li>
+						<li>
+							<a href="#diagram" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Grafik</span></a>
+						</li>
+						<li>
+							<a href="{% url 'account_logout' %}" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Logout</span></a>
+						</li>
+					</ul>
+				</nav>
+				<!-- .nav-menu -->
+			</div>
+		</header>
+		<!-- End Header -->
 
-<body>
+		<!-- ======= Hero Section ======= -->
+		<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+			<div class="hero-container" data-aos="fade-in">
+				<h1>Berasku.com</h1>
+				<p>This is <span class="typed" data-typed-items="Prediksi, Data, Statistik, Future"></span></p>
+			</div>
+		</section>
+		<!-- End Hero -->
 
-<!-- ======= Mobile nav toggle button ======= -->
-<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+		<main id="main">
+			<!-- ======= About Section ======= -->
+			<section id="predict" class="about">
+				<div class="container">
+					<div class="section-title">
+						<h2>Prediksi</h2>
+						<p>Prediksikan Harga beras untuk beberapa bulan atau bahkan beberapa tahun kedepan dari data terakhir.</p>
+						<p>Data terakhir berada pada bulan Mei tahun 2023</p>
+					</div>
 
-<!-- ======= Header ======= -->
-<header id="header">
-    <div class="d-flex flex-column">
-        <nav id="navbar" class="nav-menu navbar">
-            <ul>
-                <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a>
-                </li>
-                <li><a href="#predict" class="nav-link scrollto"><i class="bx bx-file-blank"></i>
-                    <span>Predict</span></a></li>
-                <li><a href="#profile" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Profile</span></a>
-                </li>
-                <li><a href="#data" class="nav-link scrollto"><i class="bx bx-book-content"></i>
-                    <span>Data</span></a></li>
-                <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a>
-                </li>
-                <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
-                </li>
-            </ul>
-        </nav><!-- .nav-menu -->
-    </div>
-</header><!-- End Header -->
+					<div class="form">
+						<form method="get" action="#predict" enctype="multipart/form-data">
+							<div class="mb-3">
+								<label for="year" class="form-label">Tahun : </label>
+								<input type="text" class="form-control" id="year" name="year" />
+							</div>
 
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-        <h1>Berasku.com</h1>
-        <p>This is <span class="typed" data-typed-items="Prediksi, Data, Statistik, Future"></span></p>
-    </div>
-</section><!-- End Hero -->
+							<div class="mb-3">
+								<label for="month" class="form-label">Bulan :</label>
+								<select name="month" id="month" class="form-select">
+									{% for month in months %}
+									<option value="{{ month }}">{{ month }}</option>
+									{% endfor %}
+								</select>
+							</div>
 
-<main id="main">
+							<div class="mb-3">
+								<label for="qlt" class="form-label">Kualitas : </label>
+								<select name="qlt" id="qlt" class="form-select">
+									<option value="premium">Premium</option>
+									<option value="medium">Medium</option>
+									<option value="luar kualitas">Luar Kualitas</option>
+								</select>
+							</div>
 
-    <!-- ======= About Section ======= -->
-    <section id="predict" class="about">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Predict</h2>
-                <p>Prediksikan Harga beras untuk beberapa bulan atau bahkan beberapa tahun kedepan dari data
-                    terakhir.</p>
-                <p>Data terakhir berada pada bulan Mei tahun 2023</p>
-            </div>
-
-            <div class="form">
-                <form method="get" action="#predict" enctype="multipart/form-data">
-
-                    <div class="mb-3">
-                        <label for="year" class="form-label">Tahun : </label>
-                        <input type="text" class="form-control" id="year" name="year">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="month" class="form-label">Bulan :</label>
-                        <select name="month" id="month" class="form-select">
-                            {% for month in months %}
-                            <option value="{{ month }}">{{ month }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="qlt" class="form-label">Kualitas : </label>
-                        <select name="qlt" id="qlt" class="form-select">
-                            <option value="premium">Premium</option>
-                            <option value="medium">Medium</option>
-                            <option value="luar kualitas">Luar Kualitas</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <button class="btn btn-secondary">Predict</button>
-                    </div>
-                </form>
-                <div class="mb-3">
-                    <label for="result" class="form-label">Hasil Prediksi : </label>
-                    <input type="text" name="result" id="result" value="{{ predict | intcomma }}" class="form-control">
-                </div>
-            </div>
-            <!--<div class="row">
+							<div class="mb-3">
+								<button class="btn btn-secondary" style="background-color: #8d7b68">Mulai Prediksi</button>
+							</div>
+						</form>
+						<div class="mb-3">
+							<label for="result" class="form-label">Hasil Prediksi : </label>
+							<input type="text" name="result" id="result" value="{{ predict | intcomma }}" class="form-control" />
+						</div>
+					</div>
+					<!--<div class="row">
               <div class="col-lg-4" data-aos="fade-right">
                 <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
               </div>
@@ -188,12 +187,12 @@
                 </p>
               </div>
             </div>-->
+				</div>
+			</section>
+			<!-- End About Section -->
 
-        </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Facts Section ======= -->
-    <!--<section id="facts" class="facts">
+			<!-- ======= Facts Section ======= -->
+			<!--<section id="facts" class="facts">
       <div class="container">
 
         <div class="section-title">
@@ -245,10 +244,10 @@
 
       </div>
     </section> -->
-    <!-- End Facts Section -->
+			<!-- End Facts Section -->
 
-    <!-- ======= Skills Section ======= -->
-    <!--<section id="skills" class="skills section-bg">
+			<!-- ======= Skills Section ======= -->
+			<!--<section id="skills" class="skills section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -320,18 +319,18 @@
 
       </div>
     </section>-->
-    <!-- End Skills Section -->
+			<!-- End Skills Section -->
 
-    <!-- ======= Resume Section ======= -->
-    <section id="profile" class="resume">
+			<!-- ======= Resume Section ======= -->
+			<!-- <section id="profile" class="resume">
         <div class="container">
 
             <div class="section-title">
                 <h2>Profile</h2>
                 <a href="{% url 'account_logout' %}" class="btn btn-outline-danger">Log Out</a>
-            </div>
+            </div> -->
 
-            <!--<div class="row">
+			<!--<div class="row">
               <div class="col-lg-6" data-aos="fade-up">
                 <h3 class="resume-title">Sumary</h3>
                 <div class="resume-item pb-0">
@@ -394,128 +393,154 @@
               </div>
             </div> -->
 
-        </div>
-    </section><!-- End Resume Section -->
+			<!-- </div>
+    </section> -->
+			<!-- End Resume Section -->
 
-    <!-- ======= Data Section ======= -->
-    <section id="data" class="testimonials section-bg">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="card-title">Data Series</h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form action="">
-                        <select id="year-chooser-input">
-                            <option selected disabled>--Pilihan Tahun--</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                        </select>
-                    </form>
-                    <br>
+			<!-- ======= Data Section ======= -->
+			<section id="data" class="testimonials section-bg">
+				<div class="container">
+					<div class="section-title">
+						<h2 class="card-title">Data Series</h2>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<form action="">
+								<select id="year-chooser-input">
+									<option selected disabled>--Pilihan Tahun--</option>
+									<option value="2021">2021</option>
+									<option value="2022">2022</option>
+									<option value="2023">2023</option>
+								</select>
+							</form>
+							<br />
 
-                    <!-- Table with stripped rows -->
-                    <div class="table table-bordered scroll">
-                        <table>
-                            <tr>
-                                <th rowspan="3">Kualitas Beras</th>
-                                <th colspan="13">Rata-Rata Harga Beras Bulanan di Tingkat Penggilingan Menurut Kualitas
-                                    (Rupiah/Kg)
-                                </th>
-                            </tr>
-                            <tr>
-                                <th id="year-column" colspan="13">2021</th>
-                            </tr>
-                            <tr>
-                                <th>Januari</th>
-                                <th>Februari</th>
-                                <th>Maret</th>
-                                <th>April</th>
-                                <th>Mei</th>
-                                <th>Juni</th>
-                                <th>Juli</th>
-                                <th>Agustus</th>
-                                <th>September</th>
-                                <th>Oktober</th>
-                                <th>November</th>
-                                <th>Desember</th>
-                                <th>Tahunan</th>
-                            </tr>
-                            <tr id="premium">
-                                <th>Premium</th>
+							<!-- Table with stripped rows -->
+							<div class="table table-bordered scroll">
+								<table>
+									<tr>
+										<th rowspan="3">Kualitas Beras</th>
+										<th colspan="13">Rata-Rata Harga Beras Bulanan di Tingkat Penggilingan Menurut Kualitas (Rupiah/Kg)</th>
+									</tr>
+									<tr>
+										<th id="year-column" colspan="13">2021</th>
+									</tr>
+									<tr>
+										<th>Januari</th>
+										<th>Februari</th>
+										<th>Maret</th>
+										<th>April</th>
+										<th>Mei</th>
+										<th>Juni</th>
+										<th>Juli</th>
+										<th>Agustus</th>
+										<th>September</th>
+										<th>Oktober</th>
+										<th>November</th>
+										<th>Desember</th>
+										<th>Tahunan</th>
+									</tr>
+									<tr id="premium">
+										<th>Premium</th>
+									</tr>
+									<tr id="medium">
+										<th>Medium</th>
+									</tr>
+									<tr id="luar">
+										<th>Luar Kualitas</th>
+									</tr>
+								</table>
+								<!-- End Table with stripped rows -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End Data Section -->
 
-                            </tr>
-                            <tr id="medium">
-                                <th>Medium</th>
+			<!-- ======= Services Section ======= -->
+			<section id="diagram" class="services">
+				<div class="container">
+					<div class="section-title">
+						<h2>Diagram</h2>
+					</div>
 
-                            </tr>
-                            <tr id="luar">
-                                <th>Luar Kualitas</th>
+					<div class="col-xl-6">
+						<form action="">
+							<select id="diagram-year-chooser-input">
+								<option selected disabled>--Pilihan Tahun--</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+							</select>
+						</form>
+						<br />
+						<h2 id="year-column" colspan="13">Prediksi tahun 2023</h2>
+						<!-- Bar Chart -->
+						<canvas id="ricePriceChart"></canvas>
 
-                            </tr>
-                        </table>
-                        <!-- End Table with stripped rows -->
+						<!-- <script>
+							var ctx = document.getElementById("ricePriceChart").getContext("2d")
+							var chart = new Chart(ctx, {
+								type: "bar",
+								data: {
+									labels: ["June", "July", "August", "September", "October", "November", "December"],
+									datasets: [
+										{
+											label: "Premium",
+											data: [15000, 16000, 16500, 17000, 17500, 18000, 19000],
+											backgroundColor: "rgba(255, 99, 132, 0.5)",
+											borderColor: "rgba(255, 99, 132, 1)",
+											borderWidth: 1,
+										},
+										{
+											label: "Medium",
+											data: [13000, 14000, 14500, 15000, 15500, 16000, 16500],
+											backgroundColor: "rgba(54, 162, 235, 0.5)",
+											borderColor: "rgba(54, 162, 235, 1)",
+											borderWidth: 1,
+										},
+										{
+											label: "Luar kualitas",
+											data: [10000, 10500, 11000, 11500, 12000, 12500, 13000],
+											backgroundColor: "rgba(75, 192, 192, 0.5)",
+											borderColor: "rgba(75, 192, 192, 1)",
+											borderWidth: 1,
+										},
+									],
+								},
+								options: {
+									responsive: true,
+									title: {
+										display: true,
+										text: "Rise in Rice Prices (2023)",
+									},
+									scales: {
+										y: {
+											beginAtZero: true,
+											title: {
+												display: true,
+												text: "Price (in Rupiah)",
+											},
+										},
+									},
+								},
+							})
+						</script> -->
+					</div>
+				</div>
+			</section>
+			<!-- End Services Section -->
 
-                    </div>
-                </div>
-            </div>
-        </div>
+			<!-- <section class="section">
+      <div class="row">
 
-    </section><!-- End Data Section -->
+        
+      </div>
+    </section> -->
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Diagram</h2>
-            </div>
-
-            <!-- <div class="row">
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-                <div class="icon"><i class="bi bi-briefcase"></i></div>
-                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                  occaecati cupiditate non provident</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                <h4 class="title"><a href="">Dolor Sitema</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat tarad limino ata</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                <div class="icon"><i class="bi bi-bar-chart"></i></div>
-                <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                  fugiat nulla pariatur</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon"><i class="bi bi-binoculars"></i></div>
-                <h4 class="title"><a href="">Magni Dolores</a></h4>
-                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon"><i class="bi bi-brightness-high"></i></div>
-                <h4 class="title"><a href="">Nemo Enim</a></h4>
-                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                  voluptatum deleniti atque</p>
-              </div>
-              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-                <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-                <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
-                  soluta nobis est eligendi</p>
-              </div>
-            </div>-->
-
-        </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <!-- <section id="testimonials" class="testimonials section-bg">
+			<!-- ======= Testimonials Section ======= -->
+			<!-- <section id="testimonials" class="testimonials section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -540,9 +565,9 @@
                 <h3>Saul Goodman</h3>
                 <h4>Ceo &amp; Founder</h4>
               </div>-->
-    </div><!-- End testimonial item -->
+			<!-- </div>End testimonial item -->
 
-    <!--<div class="swiper-slide">
+			<!--<div class="swiper-slide">
               <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -554,9 +579,9 @@
                 <h3>Sara Wilsson</h3>
                 <h4>Designer</h4>
               </div>-->
-    </div><!-- End testimonial item -->
+			<!-- </div>End testimonial item -->
 
-    <!--<div class="swiper-slide">
+			<!--<div class="swiper-slide">
               <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -568,9 +593,9 @@
                 <h3>Jena Karlis</h3>
                 <h4>Store Owner</h4>
               </div>-->
-    </div><!-- End testimonial item -->
+			<!-- </div>End testimonial item -->
 
-    <!--<div class="swiper-slide">
+			<!--<div class="swiper-slide">
               <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -582,9 +607,9 @@
                 <h3>Matt Brandon</h3>
                 <h4>Freelancer</h4>
               </div>-->
-    </div><!-- End testimonial item -->
+			<!-- </div>End testimonial item -->
 
-    <!--<div class="swiper-slide">
+			<!--<div class="swiper-slide">
               <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
@@ -596,25 +621,25 @@
                 <h3>John Larson</h3>
                 <h4>Entrepreneur</h4>
               </div>-->
-    </div><!-- End testimonial item -->
+			<!-- </div>End testimonial item -->
 
-    </div>
+			<!-- </div>
     <div class="swiper-pagination"></div>
     </div>
 
     </div>
-    </section>
-    <!-- End Testimonials Section -->
+    </section> -->
+			<!-- End Testimonials Section -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+			<!-- ======= Contact Section ======= -->
+			<!-- <section id="contact" class="contact">
         <div class="container">
 
             <div class="section-title">
                 <h2>Contact</h2>
-            </div>
+            </div> -->
 
-            <!--<div class="row" data-aos="fade-in">
+			<!--<div class="row" data-aos="fade-in">
 
               <div class="col-lg-5 d-flex align-items-stretch">
                 <div class="info">
@@ -674,47 +699,40 @@
 
             </div>-->
 
-        </div>
-    </section><!-- End Contact Section -->
+			<!-- </div>
+    </section>End Contact Section -->
+		</main>
+		<!-- End #main -->
 
-</main><!-- End #main -->
+		<!-- ======= Footer ======= -->
+		<footer id="footer">
+			<div class="container">
+				<div class="copyright">&copy; Copyright</div>
+				<div class="credits">Designed by Andi Tenri</div>
+			</div>
+		</footer>
+		<!-- End  Footer -->
 
-<!-- ======= Footer ======= -->
-<footer id="footer">
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright
-        </div>
-        <div class="credits">
-            Designed by Andi Tenri
-        </div>
-    </div>
-</footer><!-- End  Footer -->
+		<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+		<!-- Vendor JS Files -->
+		<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+		<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+		<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+		<script src="{% static 'assets/vendor/typed.js/typed.umd.js' %}"></script>
+		<script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+		<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
 
-<!-- Vendor JS Files -->
-<script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-<script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
-<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-<script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
-<script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'assets/vendor/typed.js/typed.umd.js' %}"></script>
-<script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
-<script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+		<!-- Template Main JS File -->
 
-<!-- Template Main JS File -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
-<script src="{% static '/assets/vendor/jquery/jquery-3.7.0.min.js' %}"></script>
-<script src="{% static 'assets/js/main.js' %}"></script>
-<script src="{% static '/assets/js/beras.js' %}"></script>
-<script src="{% static '/assets/js/index.js' %}"></script>
-</body>
-
+		<script src="{% static '/assets/vendor/jquery/jquery-3.7.0.min.js' %}"></script>
+		<script src="{% static 'assets/js/main.js' %}"></script>
+		<script src="{% static '/assets/js/beras.js' %}"></script>
+		<script src="{% static '/assets/js/index.js' %}"></script>
+	</body>
 </html>
