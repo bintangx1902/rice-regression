@@ -41,7 +41,7 @@ document.querySelector("#diagram-year-chooser-input").addEventListener("change",
 	chart = chart = new Chart(ctx, {
 		type: "bar",
 		data: {
-			labels: ["January", "February", "March", "June", "July", "August", "September", "October", "November", "December"],
+			labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
 			datasets: [
 				{
 					label: "Premium",
