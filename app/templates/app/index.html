@@ -119,14 +119,18 @@
 						<form method="get" action="#predict" enctype="multipart/form-data">
 							<div class="mb-3">
 								<label for="year" class="form-label">Tahun : </label>
-								<input type="text" class="form-control" id="year" name="year" />
+								<input type="text" class="form-control" id="year" name="year"  value="{{ year }}" />
 							</div>
 
 							<div class="mb-3">
 								<label for="month" class="form-label">Bulan :</label>
 								<select name="month" id="month" class="form-select">
 									{% for month in months %}
+									{% if forloop.counter == monthss %}
+									<option value="{{ month }}" selected>{{ month }}</option>
+									{% else %}
 									<option value="{{ month }}">{{ month }}</option>
+									{% endif %}
 									{% endfor %}
 								</select>
 							</div>
@@ -134,9 +138,9 @@
 							<div class="mb-3">
 								<label for="qlt" class="form-label">Kualitas : </label>
 								<select name="qlt" id="qlt" class="form-select">
-									<option value="premium">Premium</option>
-									<option value="medium">Medium</option>
-									<option value="luar kualitas">Luar Kualitas</option>
+									<option value="Premium" {% if qlt == 'Premium' %}selected{% endif %}>Premium</option>
+									<option value="Medium" {% if qlt == 'Medium' %}selected{% endif %}>Medium</option>
+									<option value="Luar Kualitas" {% if qlt == 'Luar Kualitas' %}selected{% endif %}>Luar Kualitas</option>
 								</select>
 							</div>
 
