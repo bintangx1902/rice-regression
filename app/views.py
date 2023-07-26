@@ -17,7 +17,7 @@ class LandingPage(TemplateView):
     template_name = get_template('index')
 
     def get_context_data(self, **kwargs):
-        year, month, qlt = None, None, None
+        year, month, qlt = "", None, None
         context = super().get_context_data(**kwargs)
         month_list = ['januari', 'febuari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'oktober',
                       'november', 'desember']
