@@ -76,6 +76,6 @@ class LandingPage(TemplateView):
         context['qlt'] = qlt
         return context
 
-    # @method_decorator(login_required(login_url=settings.LOGIN_URL))
-    # def dispatch(self, request, *args, **kwargs):
-    #     return super().dispatch(request, *args, **kwargs)
+    @method_decorator(login_required(login_url=settings.LOGIN_URL))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
