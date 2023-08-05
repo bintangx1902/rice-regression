@@ -26,13 +26,13 @@ class LandingPage(TemplateView):
         x_premium, y_premium, x_medium, y_medium, x_low, y_low = data_frame()
 
         premium_scaler = StandardScaler()
-        premium_scaler.fit(x_premium)
+        premium_scaler = premium_scaler.fit(x_premium)
 
         medium_scaler = StandardScaler()
-        medium_scaler.fit(x_medium)
+        medium_scaler = medium_scaler.fit(x_medium)
 
         low_scaler = StandardScaler()
-        low_scaler.fit(x_low)
+        low_scaler = low_scaler.fit(x_low)
 
         premium_scaled_data = premium_scaler.transform(x_premium)
         premium_scaled_data = pd.DataFrame(premium_scaled_data, columns=x_premium.columns)
@@ -60,7 +60,7 @@ class LandingPage(TemplateView):
 
             months = month + (year - start_year) * 12
 
-            pred = np.array([[month]])
+            pred = np.array([[months]])
             if qlt.lower() == 'premium':
                 predict = prediction(model_premium, pred)
             elif qlt.lower == 'medium':
